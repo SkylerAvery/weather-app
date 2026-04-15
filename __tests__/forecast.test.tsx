@@ -1,4 +1,4 @@
-import { getCityData } from "@/app/api/search/route";
+import { getCityData } from "@/app/api/search/citySearch";
 
 describe("getCityData", () => {
   beforeEach(() => {

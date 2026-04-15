@@ -3,7 +3,7 @@ import Forecast from "./Forecast";
 import WeatherCityLoading from "./loading";
 import { CityGeoCoding } from "@/app/types/geoData";
 import { Forecast as ForecastType } from "@/app/types/forecast";
-import { getCityData } from "@/app/api/search/route";
+import { getCityData } from "@/app/api/search/citySearch";
 
 type WeatherPageProps = {
   params: Promise<{ city: string; countryCode: string }>;
