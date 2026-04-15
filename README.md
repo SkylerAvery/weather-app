@@ -20,3 +20,8 @@ Aside from Next.js being the core constraint for this project, I intend to use t
 - Jest and React Testing Library: I would like to right some tests to capture responses from the API and handle error states correctly. Jest and RTL I will use for this test, however if I had more time I would like to include Playwright testing too for end to end testing
 
 I will structure any global components inside a `/components` folder. Everything else will be related to the route that is consuming the component. If the scope of this project is due to change however, I would extract these into an atomic, molecule, organism structure of components.
+
+## Deployment
+
+I've deployed this application to [https://weather-app-green-nine-56.vercel.app/](https://weather-app-green-nine-56.vercel.app/).
+This is synced in Vercel that any commit to main will redeploy the application
