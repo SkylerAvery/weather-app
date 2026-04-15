@@ -2,16 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-
-type CitySuggestion = {
-  id: string;
-  name: string;
-  country: string;
-  country_code: string;
-  admin1: string;
-  latitude: number;
-  longitude: number;
-};
+import { CitySuggestion } from "@/app/types/citySuggestion";
 
 export default function CitySearch() {
   const router = useRouter();

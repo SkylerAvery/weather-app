@@ -3,7 +3,7 @@ interface WeatherCode {
   description: string
 }
 
-export const weatherCodes: WeatherCode[] = [
+const weatherCodes: WeatherCode[] = [
   { code: 0, description: "Clear sky" },
   { code: 1, description: "Mainly clear" },
   { code: 2, description: "Partly cloudy" },

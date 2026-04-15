@@ -1,10 +1,6 @@
 import { CityGeoCoding } from "@/app/types/geoData";
 import { Forecast } from "@/app/types/forecast";
-
-export type CitySuggestion = Pick<
-  CityGeoCoding,
-  "id" | "name" | "country" | "admin1" | "latitude" | "longitude"
->;
+import { CitySuggestion } from "@/app/types/citySuggestion";
 
 async function getCityGeocoding(city: string, count: number = 1, countryCode?: string) {
   const geo = await fetch(
@@ -49,12 +45,6 @@ async function getForecast(latitude: number, longitude: number): Promise<Forecas
     return { data: null, error: true, reason: response.reason };
   }
   return { data: response, error: false, reason: null };
-}
-
-export async function getForecastByCoordinates(latitude: number, longitude: number) {
-  const forecast = await getForecast(latitude, longitude);
-  const geoData = await getCityGeocoding(`${latitude},${longitude}`);
-  return { forecast, geoData: geoData[0] ?? null, error: forecast.error, reason: null };
 }
 
 export async function getCitySuggestions(query: string, count: number = 5): Promise<CitySuggestion[]> {
