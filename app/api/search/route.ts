@@ -8,7 +8,7 @@ export type CitySuggestion = Pick<
 
 async function getCityGeocoding(city: string, count: number = 1, countryCode?: string) {
   const geo = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${city}&countryCode=${countryCode}&count=${count}`,
+    `https://geocoding-api.open-meteo.com/v1/search?name=${city}${countryCode ? `&countryCode=${countryCode}` : ""}&count=${count}`,
     {
       method: "GET",
       headers: {
