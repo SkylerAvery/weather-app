@@ -32,7 +32,7 @@ export default function FavoritesPage() {
                 <p className="font-medium">{city.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ")}</p>
               </div>
               <Link
-                href={`/weather/${city}`}
+                href={`/weather/${city.split(",")[0]}/${city.split(",")[1]}`}
                 className="rounded-md border border-slate-700 px-3 py-2 text-sm hover:border-sky-400"
               >
                 View
