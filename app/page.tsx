@@ -12,6 +12,8 @@ export default function Home() {
       </div>
 
       <CitySearch />
+      {/* Splitting this into a client component due to user interaction with city suggestions and the useEffect hook */}
+      {/* The rest of this page is server component as it's not interactive */}
     </section>
   );
 }
