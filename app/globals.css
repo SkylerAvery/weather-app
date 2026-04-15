@@ -31,6 +31,10 @@
 }
 
 @theme inline {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -57,4 +61,28 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.forecast-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent-color) var(--surface-muted-color);
+}
+
+.forecast-scrollbar::-webkit-scrollbar {
+  height: 12px;
+}
+
+.forecast-scrollbar::-webkit-scrollbar-track {
+  background: var(--surface-muted-color);
+  border-radius: 9999px;
+}
+
+.forecast-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 9999px;
+  border: 2px solid var(--surface-muted-color);
+}
+
+.forecast-scrollbar::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.1);
 }

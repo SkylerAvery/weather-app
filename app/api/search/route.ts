@@ -6,9 +6,9 @@ export type CitySuggestion = Pick<
   "id" | "name" | "country" | "admin1" | "latitude" | "longitude"
 >;
 
-async function getCityGeocoding(city: string, count: number = 1) {
+async function getCityGeocoding(city: string, count: number = 1, countryCode?: string) {
   const geo = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=${count}`,
+    `https://geocoding-api.open-meteo.com/v1/search?name=${city}&countryCode=${countryCode}&count=${count}`,
     {
       method: "GET",
       headers: {
@@ -16,7 +16,7 @@ async function getCityGeocoding(city: string, count: number = 1) {
       },
       next: {
         revalidate: 60,
-        tags: ["geocoding", city],
+        tags: ["geocoding", `${city}, ${countryCode ?? ""}`],
       },
     },
   );
@@ -67,18 +67,19 @@ export async function getCitySuggestions(query: string, count: number = 5): Prom
     id: result.id,
     name: result.name,
     country: result.country,
+    country_code: result.country_code,
     admin1: result.admin1,
     latitude: result.latitude,
     longitude: result.longitude,
   }));
 }
 
-export async function getCityData(city: string) {
+export async function getCityData(city: string, countryCode?: string) {
   if (!city) {
     return { forecast: null, geoData: null, error: false, reason: null };
   }
 
-  const geoData = await getCityGeocoding(city);
+  const geoData = await getCityGeocoding(city, 1, countryCode);
   if (geoData.length === 0) {
     return { forecast: null, geoData: null, error: false, reason: null };
   }
@@ -89,6 +90,7 @@ export async function getCityData(city: string) {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const city = searchParams.get("city");
+  const countryCode = searchParams.get("countryCode");
   const mode = searchParams.get("mode");
   const query = searchParams.get("q");
 
@@ -100,6 +102,7 @@ export async function GET(request: Request) {
   if (!city) {
     return new Response(JSON.stringify({ forecast: null, geoData: null, error: false, reason: null }), { status: 404 });
   }
-  const cityData = await getCityData(city);
+
+  const cityData = await getCityData(city, countryCode ?? undefined);
   return new Response(JSON.stringify(cityData), { status: cityData.error ? 500 : 200 });
 }

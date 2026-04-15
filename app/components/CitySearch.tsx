@@ -7,6 +7,7 @@ type CitySuggestion = {
   id: string;
   name: string;
   country: string;
+  country_code: string;
   admin1: string;
   latitude: number;
   longitude: number;
@@ -61,7 +62,7 @@ export default function CitySearch() {
   }, [trimmedQuery]);
 
   function navigateToWeather(suggestion: CitySuggestion) {
-    router.push(`/weather/${suggestion.id}`);
+    router.push(`/weather/${suggestion.name}/${suggestion.country_code}`);
     setSuggestions([]);
   }
 
