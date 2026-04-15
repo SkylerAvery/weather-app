@@ -4,7 +4,7 @@ export interface Forecast {
   reason: string | null
 }
 
-export interface ForecastData {
+interface ForecastData {
     latitude: number
     longitude: number,
     generationtime_ms: number,

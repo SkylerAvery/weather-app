@@ -1,5 +1,5 @@
 import { CityGeoCoding } from "@/app/types/geoData";
-import { Forecast, ForecastData } from "@/app/types/forecast";
+import { Forecast } from "@/app/types/forecast";
 
 export type CitySuggestion = Pick<
   CityGeoCoding,
