@@ -84,7 +84,7 @@ export async function getCityData(city: string, countryCode?: string) {
     return { forecast: null, geoData: null, error: false, reason: null };
   }
   const forecast = await getForecast(geoData[0].latitude, geoData[0].longitude);
-  return { forecast, geoData: geoData[0] ?? null, error: forecast.error, reason: null };
+  return { forecast, geoData: geoData[0] ?? null, error: forecast?.error ?? false, reason: forecast?.reason ?? null };
 }
 
 export async function GET(request: Request) {
