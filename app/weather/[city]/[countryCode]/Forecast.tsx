@@ -27,7 +27,7 @@ export default function Forecast({
   }
 
   const { current, daily } = forecast.data;
-  const { name, country, id , admin1, country_code} = geoData;
+  const { name, country , admin1, country_code} = geoData;
 
   const unit = forecast.data.daily_units.temperature_2m_max;
   const days = daily.time
@@ -45,7 +45,7 @@ export default function Forecast({
         <h2 className="text-2xl font-semibold leading-tight sm:text-3xl">
           {name}, {admin1 ? `${admin1}, ` : ""}{country} forecast
         </h2>
-        <SaveToFavoritesButton city={id} countryCode={country_code} />
+        <SaveToFavoritesButton city={name} countryCode={country_code} />
       </div>
       <section aria-label={`${name}, ${admin1 ? `${admin1}, ` : ""}${country} seven day forecast`} className="space-y-4">
         <header className="rounded-lg border border-[var(--border-color)] bg-[var(--surface-color)] p-4 sm:p-5">
