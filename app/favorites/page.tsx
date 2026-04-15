@@ -19,21 +19,21 @@ export default function FavoritesPage() {
     <section className="space-y-5">
       <div className="space-y-1">
         <h2 className="text-3xl font-semibold">Favorite cities</h2>
-        <p className="text-slate-300">
+        <p className="text-[var(--muted-color)]">
           Save cities here and show quick forecast snapshots.
         </p>
       </div>
 
       <ul className="grid gap-3 sm:grid-cols-2">
         {favorites.map((city) => (
-          <li key={city} className="rounded-lg border border-slate-800 bg-slate-900 p-4">
+          <li key={city} className="rounded-lg border border-[var(--border-color)] bg-[var(--surface-color)] p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">{city.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ")}</p>
               </div>
               <Link
                 href={`/weather/${city.split(",")[0]}/${city.split(",")[1]}`}
-                className="rounded-md border border-slate-700 px-3 py-2 text-sm hover:border-sky-400"
+                className="rounded-md border border-[var(--border-color)] px-3 py-2 text-sm hover:border-[var(--accent-color)]"
               >
                 View
               </Link>

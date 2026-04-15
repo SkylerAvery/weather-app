@@ -59,7 +59,7 @@ export default function CitySearch() {
 
   return (
     <form
-      className="grid max-w-xl gap-3 rounded-lg border border-slate-800 bg-slate-900 p-4 sm:grid-cols-[1fr_auto]"
+      className="grid max-w-xl gap-3 rounded-lg border border-[var(--border-color)] bg-[var(--surface-color)] p-4 sm:grid-cols-[1fr_auto]"
       onSubmit={(e) => {
         // User needs to select a city from the suggestions when entering a city name
         e.preventDefault();
@@ -73,15 +73,15 @@ export default function CitySearch() {
           id="city"
           name="city"
           placeholder="Try: London, Paris, Tokyo"
-          className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:border-sky-400 focus:outline-none"
+          className="w-full rounded-md border border-[var(--border-color)] bg-[var(--surface-color)] px-3 py-2 text-[var(--muted-color)] placeholder:text-[var(--muted-color)] focus:border-sky-400 focus:outline-none"
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           autoComplete="off"
         />
         {(loading || error || suggestions.length > 0) && (
-          <div className="absolute z-10 mt-1 w-full rounded-md border border-slate-700 bg-slate-950 shadow-lg">
-            {loading && <p className="px-3 py-2 text-sm text-slate-300">Searching cities...</p>}
+          <div className="absolute z-10 mt-1 w-full rounded-md border border-[var(--border-color)] bg-[var(--surface-color)] shadow-lg">
+            {loading && <p className="px-3 py-2 text-sm text-[var(--muted-color)]">Searching cities...</p>}
             {error && <p className="px-3 py-2 text-sm text-rose-300">{error}</p>}
             {!loading && !error && suggestions.length > 0 && (
               <ul>
@@ -89,7 +89,7 @@ export default function CitySearch() {
                   <li key={suggestion.id}>
                     <button
                       type="button"
-                      className="w-full px-3 py-2 text-left text-sm text-slate-200 hover:bg-slate-800"
+                      className="w-full px-3 py-2 text-left text-sm text-[var(--muted-color)] hover:bg-[var(--surface-muted-color)]"
                       onClick={() =>
                         navigateToWeather(suggestion)
                       }
@@ -105,7 +105,7 @@ export default function CitySearch() {
         )}
       </div>
       <button
-        className="rounded-md bg-sky-500 px-4 py-2 font-medium text-slate-950 hover:bg-sky-400 sm:col-span-2"
+        className="rounded-md bg-[var(--accent-color)] px-4 py-2 font-medium text-[var(--background)] hover:bg-[var(--accent-color)]/80 sm:col-span-2"
         type="submit"
       >
         Search
